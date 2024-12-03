@@ -18,7 +18,7 @@ const defaultSEOConfig = {
     site_name: "og-img",
   },
   twitter: {
-    handle: "@sozonome",
+    handle: "@agstnsnathaniel",
     cardType: "summary_large_image",
   },
 };
