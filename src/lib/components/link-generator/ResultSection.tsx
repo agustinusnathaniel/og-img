@@ -24,6 +24,7 @@ const LinkGeneratorResultSection = ({
             bgGradient="linear(to-br, gray.500, gray.800)"
             onClick={onClick}
             _hover={{ cursor: 'pointer' }}
+            alt={ogImageUrl}
           />
         </Tooltip>
       </AspectRatio>
