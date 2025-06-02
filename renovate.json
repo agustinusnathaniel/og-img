@@ -5,6 +5,7 @@
     "enabled": false
   },
   "updatePinnedDependencies": false,
+  "rangeStrategy": "bump",
   "stabilityDays": 2,
   "timezone": "Asia/Jakarta",
   "schedule": ["before 1am on the first day of the month"]
