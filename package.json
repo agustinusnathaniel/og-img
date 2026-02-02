@@ -35,12 +35,12 @@
     "@fontsource/outfit": "^5.2.8",
     "clsx": "^2.1.1",
     "framer-motion": "^11.12.0",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.17.23",
     "next": "^15.3.3",
     "next-seo": "^6.8.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.66.0",
+    "react-hook-form": "^7.71.1",
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
@@ -54,7 +54,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "next-sitemap": "^4.2.3",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.9.3"
   }
