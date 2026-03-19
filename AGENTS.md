@@ -8,6 +8,13 @@ Before any Next.js work, find and read the relevant doc in `node_modules/next/di
  
 <!-- END:nextjs-agent-rules -->
 
+<!-- BEGIN:chakra-ui-agent-rules -->
+## Chakra UI
+
+- When using chakra CLI, ensure --outdir is `src/lib/components/ui`
+<!-- END:chakra-ui-agent-rules -->
+
+
 ---
 
 # Ultracite Code Standards
