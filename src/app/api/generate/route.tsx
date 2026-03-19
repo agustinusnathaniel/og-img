@@ -1,13 +1,12 @@
-import TemplateSwitcher from 'lib/components/image-templates/template-wrapper';
-import { outfitBold, outfitMedium } from 'lib/utils/font/outfit';
 import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
 
-export const config = {
-  runtime: 'edge',
-};
+import TemplateSwitcher from '@/lib/components/image-templates/template-wrapper';
+import { outfitBold, outfitMedium } from '@/lib/utils/font/outfit';
 
-export default async function handler(req: NextRequest) {
+export const runtime = 'edge';
+
+export async function GET(req: NextRequest) {
   const outfitMediumFontData = await outfitMedium;
   const outfitBoldFontData = await outfitBold;
 
