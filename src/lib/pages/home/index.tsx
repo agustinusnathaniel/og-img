@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
 const Home = () => {
@@ -10,13 +10,23 @@ const Home = () => {
       textAlign="center"
       w="full"
     >
-      <Heading>🖼️ og-img</Heading>
+      <Heading size="4xl">🖼️ og-img</Heading>
       <Text>Edge service to generate embeddable dynamic OpenGraph image</Text>
 
       <Flex justifyContent="center">
-        <Button as={Link} colorScheme="teal" href="/generate">
+        <Link
+          href="/generate"
+          style={{
+            display: 'inline-block',
+            padding: '8px 16px',
+            backgroundColor: 'var(--chakra-colors-teal-500)',
+            color: 'white',
+            borderRadius: '8px',
+            textDecoration: 'none',
+          }}
+        >
           Generate
-        </Button>
+        </Link>
       </Flex>
     </Stack>
   );

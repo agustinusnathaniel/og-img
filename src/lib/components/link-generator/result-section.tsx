@@ -1,4 +1,6 @@
-import { AspectRatio, Image, Text, Tooltip } from '@chakra-ui/react';
+import { AspectRatio, Image, Text } from '@chakra-ui/react';
+
+import { Tooltip } from '@/lib/components/ui/tooltip';
 
 type LinkGeneratorResultSectionProps = {
   generatedImageUrl: string;
@@ -14,12 +16,17 @@ const LinkGeneratorResultSection = ({
   return (
     <>
       <AspectRatio ratio={1200 / 630}>
-        <Tooltip label={`${ogImageUrl} [click to copy]`} placement="top">
+        <Tooltip
+          content={`${ogImageUrl} [click to copy]`}
+          positioning={{ placement: 'top' }}
+        >
           <Image
             _hover={{ cursor: 'pointer' }}
             alt={ogImageUrl}
-            bgGradient="linear(to-br, gray.500, gray.800)"
+            bgGradient="to-br"
             borderRadius={8}
+            gradientFrom="gray.500"
+            gradientTo="gray.800"
             height="630"
             onClick={onClick}
             shadow="xl"
@@ -29,7 +36,7 @@ const LinkGeneratorResultSection = ({
         </Tooltip>
       </AspectRatio>
 
-      <Tooltip label="click to copy">
+      <Tooltip content="click to copy">
         <Text
           _hover={{
             cursor: 'pointer',

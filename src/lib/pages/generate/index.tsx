@@ -1,15 +1,17 @@
-import { Button, Grid, Heading, Stack, useToast } from '@chakra-ui/react';
+'use client';
+
+import { Button, Grid, Heading, Stack } from '@chakra-ui/react';
 import LinkGeneratorFormWrapper from 'lib/components/link-generator/form-wrapper';
 import LinkGeneratorResultSection from 'lib/components/link-generator/result-section';
 import type { OgImageOption } from 'lib/types/og-image-option';
 import { buildOgImageUrl } from 'lib/utils/build-og-image-url';
-import type { NextPage } from 'next';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
-const Generate: NextPage = () => {
-  const toast = useToast();
-  const { watch, register } = useForm<OgImageOption>({
+import { toaster } from '@/lib/components/ui/toaster';
+
+const Generate = () => {
+  const { watch, register, control } = useForm<OgImageOption>({
     defaultValues: {
       heading: 'Some Title',
       text: 'Some description',
@@ -26,18 +28,16 @@ const Generate: NextPage = () => {
   const handleClickCopy = () => {
     navigator.clipboard.writeText(ogImageUrl);
 
-    toast({
-      status: 'success',
+    toaster.create({
       title: 'OpenGraph image url copied!',
       description: ogImageUrl,
-      isClosable: true,
-      position: 'top',
+      type: 'success',
     });
   };
 
   return (
-    <Stack justifyContent="center" minHeight="70vh" spacing={8}>
-      <Heading color="teal" size="xl">
+    <Stack gap={8} justifyContent="center" minHeight="70vh">
+      <Heading colorPalette="teal" size="3xl">
         Generate OpenGraph image
       </Heading>
 
@@ -49,15 +49,15 @@ const Generate: NextPage = () => {
           md: 'repeat(2, 1fr)',
         }}
       >
-        <Stack spacing={6}>
-          <LinkGeneratorFormWrapper register={register} />
+        <Stack gap={6}>
+          <LinkGeneratorFormWrapper control={control} register={register} />
 
-          <Button colorScheme="teal" onClick={handleClickCopy}>
+          <Button colorPalette="teal" onClick={handleClickCopy}>
             Copy URL
           </Button>
         </Stack>
 
-        <Stack spacing={6}>
+        <Stack gap={6}>
           <LinkGeneratorResultSection
             generatedImageUrl={ogImageUrl}
             ogImageUrl={ogImageUrl}

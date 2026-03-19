@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 
 import clsx from 'clsx';
-import type { OgImageOption } from 'lib/types/og-image-option';
+
+import type { OgImageOption } from '@/lib/types/og-image-option';
 
 type BaseTemplateProps = Omit<OgImageOption, 'template'>;
 

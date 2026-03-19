@@ -1,17 +1,21 @@
+'use client';
+
 import { Checkbox } from '@chakra-ui/react';
-import ControlledInput from 'lib/components/shared/form/controlled-input';
-import ControlledSelect from 'lib/components/shared/form/controlled-select';
+import ControlledInput from 'lib/components/form/controlled-input';
+import { ControlledSelect } from 'lib/components/form/controlled-select';
 import { templateOptions } from 'lib/constants/template-option';
 import type { OgImageOption } from 'lib/types/og-image-option';
 import { generateOptions } from 'lib/utils/generate-options';
-import type { UseFormRegister } from 'react-hook-form';
+import type { Control, UseFormRegister } from 'react-hook-form';
 
 type LinkGeneratorFormWrapperProps = {
   register: UseFormRegister<OgImageOption>;
+  control: Control<OgImageOption>;
 };
 
 const LinkGeneratorFormWrapper = ({
   register,
+  control,
 }: LinkGeneratorFormWrapperProps) => {
   return (
     <>
@@ -28,11 +32,20 @@ const LinkGeneratorFormWrapper = ({
         size="sm"
       />
       <ControlledSelect
-        {...register('template')}
+        control={control}
         label="Template"
+        name="template"
         options={generateOptions(templateOptions)}
+        placeholder="Select template"
+        size="md"
       />
-      <Checkbox {...register('center')}>center</Checkbox>
+      <Checkbox.Root {...register('center')}>
+        <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label>center</Checkbox.Label>
+      </Checkbox.Root>
     </>
   );
 };
