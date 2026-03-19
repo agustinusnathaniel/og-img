@@ -1,10 +1,9 @@
-import pickBy from 'lodash-es/pickBy';
-
-import { baseUrl } from 'lib/constants/baseUrl';
+import { baseUrl } from 'lib/constants/base-url';
 import type {
   OgImageOption,
   OgImageOptionConverted,
-} from 'lib/types/ogImageOption';
+} from 'lib/types/og-image-option';
+import pickBy from 'lodash-es/pickBy';
 
 export const buildOgImageUrl = (options: OgImageOption) => {
   const converted: OgImageOptionConverted = {

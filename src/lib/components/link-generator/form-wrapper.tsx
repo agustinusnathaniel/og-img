@@ -1,11 +1,10 @@
 import { Checkbox } from '@chakra-ui/react';
-import type { UseFormRegister } from 'react-hook-form';
-
-import ControlledInput from 'lib/components/shared/form/ControlledInput';
-import ControlledSelect from 'lib/components/shared/form/ControlledSelect';
+import ControlledInput from 'lib/components/shared/form/controlled-input';
+import ControlledSelect from 'lib/components/shared/form/controlled-select';
 import { templateOptions } from 'lib/constants/template-option';
-import type { OgImageOption } from 'lib/types/ogImageOption';
-import { generateOptions } from 'lib/utils/generateOptions';
+import type { OgImageOption } from 'lib/types/og-image-option';
+import { generateOptions } from 'lib/utils/generate-options';
+import type { UseFormRegister } from 'react-hook-form';
 
 type LinkGeneratorFormWrapperProps = {
   register: UseFormRegister<OgImageOption>;
@@ -19,14 +18,14 @@ const LinkGeneratorFormWrapper = ({
       <ControlledInput
         {...register('heading')}
         label="Heading"
-        size="lg"
         placeholder="Heading text"
+        size="lg"
       />
       <ControlledInput
         {...register('text')}
         label="Text"
-        size="sm"
         placeholder="Description text"
+        size="sm"
       />
       <ControlledSelect
         {...register('template')}

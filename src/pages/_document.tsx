@@ -1,8 +1,7 @@
 import { ColorModeScript } from '@chakra-ui/react';
+import customTheme from 'lib/styles/custom-theme';
 import type { DocumentContext } from 'next/document';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-
-import customTheme from 'lib/styles/customTheme';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 const APP_NAME = 'nextarter-chakra';
 
@@ -15,16 +14,16 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="application-name" content={APP_NAME} />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta content={APP_NAME} name="application-name" />
+          <meta content="yes" name="apple-mobile-web-app-capable" />
           <meta
-            name="apple-mobile-web-app-status-bar-style"
             content="default"
+            name="apple-mobile-web-app-status-bar-style"
           />
-          <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="theme-color" content="#FFFFFF" />
+          <meta content={APP_NAME} name="apple-mobile-web-app-title" />
+          <meta content="telephone=no" name="format-detection" />
+          <meta content="yes" name="mobile-web-app-capable" />
+          <meta content="#FFFFFF" name="theme-color" />
 
           {/* add your own app-icon */}
           {/* <link
@@ -32,8 +31,8 @@ class MyDocument extends Document {
             sizes="180x180"
             href="/icons/apple-touch-icon.png"
           /> */}
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="manifest" href="/manifest.json" />
+          <link href="/favicon.ico" rel="icon" />
+          <link href="/manifest.json" rel="manifest" />
         </Head>
         <body>
           <ColorModeScript

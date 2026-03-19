@@ -16,29 +16,29 @@ const LinkGeneratorResultSection = ({
       <AspectRatio ratio={1200 / 630}>
         <Tooltip label={`${ogImageUrl} [click to copy]`} placement="top">
           <Image
+            _hover={{ cursor: 'pointer' }}
+            alt={ogImageUrl}
+            bgGradient="linear(to-br, gray.500, gray.800)"
             borderRadius={8}
+            height="630"
+            onClick={onClick}
             shadow="xl"
             src={generatedImageUrl}
             width="1200"
-            height="630"
-            bgGradient="linear(to-br, gray.500, gray.800)"
-            onClick={onClick}
-            _hover={{ cursor: 'pointer' }}
-            alt={ogImageUrl}
           />
         </Tooltip>
       </AspectRatio>
 
       <Tooltip label="click to copy">
         <Text
-          onClick={onClick}
-          wordBreak="break-all"
           _hover={{
             cursor: 'pointer',
             textDecoration: 'underline',
           }}
-          fontSize="sm"
           color="gray"
+          fontSize="sm"
+          onClick={onClick}
+          wordBreak="break-all"
         >
           {ogImageUrl}
         </Text>

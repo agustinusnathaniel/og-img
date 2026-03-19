@@ -4,17 +4,17 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <Stack
-      mb={8}
-      w="full"
-      textAlign="center"
-      minHeight="70vh"
       justifyContent="center"
+      mb={8}
+      minHeight="70vh"
+      textAlign="center"
+      w="full"
     >
       <Heading>🖼️ og-img</Heading>
       <Text>Edge service to generate embeddable dynamic OpenGraph image</Text>
 
       <Flex justifyContent="center">
-        <Button as={Link} href="/generate" colorScheme="teal">
+        <Button as={Link} colorScheme="teal" href="/generate">
           Generate
         </Button>
       </Flex>

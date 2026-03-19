@@ -1,3 +1,1 @@
-import Generate from 'lib/pages/generate';
-
-export default Generate;
+export { default } from 'lib/pages/generate';

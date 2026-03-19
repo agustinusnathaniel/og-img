@@ -1,8 +1,8 @@
 import type {
   FormControlProps,
   FormErrorMessageProps,
-  FormLabelProps,
   FormHelperTextProps,
+  FormLabelProps,
 } from '@chakra-ui/react';
 import {
   FormControl,

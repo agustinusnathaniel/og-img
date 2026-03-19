@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 
 import clsx from 'clsx';
-
-import type { OgImageOption } from 'lib/types/ogImageOption';
+import type { OgImageOption } from 'lib/types/og-image-option';
 
 type ColorTemplateProps = Omit<OgImageOption, 'template'>;
 
@@ -19,8 +18,8 @@ const ColorTemplate = ({
 
   return (
     <div
-      tw="w-screen h-screen flex flex-col justify-center bg-gray-900"
       style={{ fontFamily: 'Inter' }}
+      tw="w-screen h-screen flex flex-col justify-center bg-gray-900"
     >
       <div
         style={{
@@ -28,13 +27,14 @@ const ColorTemplate = ({
           height: `${aHeight.toString()}px`,
           width: `${aWidth.toString()}px`,
           filter: `blur(${blurSize}px) saturate(125%)`,
-          backgroundImage: `linear-gradient(45deg, #231e26, #a34e11, #199f9d, #102532)`,
+          backgroundImage:
+            'linear-gradient(45deg, #231e26, #a34e11, #199f9d, #102532)',
           opacity: 0.92,
         }}
       />
       <div
         tw={clsx(
-          'p-32 flex flex-col',
+          'flex flex-col p-32',
           center && 'w-screen items-center text-center'
         )}
       >

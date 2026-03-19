@@ -1,8 +1,7 @@
+import TemplateSwitcher from 'lib/components/image-templates/template-wrapper';
+import { outfitBold, outfitMedium } from 'lib/utils/font/outfit';
 import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
-
-import TemplateSwitcher from 'lib/components/image-templates/TemplateWrapper';
-import { outfitBold, outfitMedium } from 'lib/utils/font/outfit';
 
 export const config = {
   runtime: 'edge',

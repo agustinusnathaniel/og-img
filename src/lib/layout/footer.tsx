@@ -2,7 +2,7 @@ import { Flex, Link, Text } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Flex as="footer" width="full" align="center">
+    <Flex align="center" as="footer" width="full">
       <Text>
         {new Date().getFullYear()} -{' '}
         <Link href="https://agustinusnathaniel.com" isExternal>

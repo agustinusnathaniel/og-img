@@ -1,12 +1,11 @@
 import { Button, Grid, Heading, Stack, useToast } from '@chakra-ui/react';
+import LinkGeneratorFormWrapper from 'lib/components/link-generator/form-wrapper';
+import LinkGeneratorResultSection from 'lib/components/link-generator/result-section';
+import type { OgImageOption } from 'lib/types/og-image-option';
+import { buildOgImageUrl } from 'lib/utils/build-og-image-url';
 import type { NextPage } from 'next';
-import * as React from 'react';
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-
-import LinkGeneratorFormWrapper from 'lib/components/link-generator/FormWrapper';
-import LinkGeneratorResultSection from 'lib/components/link-generator/ResultSection';
-import type { OgImageOption } from 'lib/types/ogImageOption';
-import { buildOgImageUrl } from 'lib/utils/buildOgImageUrl';
 
 const Generate: NextPage = () => {
   const toast = useToast();
@@ -20,7 +19,7 @@ const Generate: NextPage = () => {
 
   const values = watch();
 
-  const ogImageUrl = React.useMemo(() => {
+  const ogImageUrl = useMemo(() => {
     return buildOgImageUrl(values);
   }, [values]);
 
@@ -37,18 +36,18 @@ const Generate: NextPage = () => {
   };
 
   return (
-    <Stack spacing={8} minHeight="70vh" justifyContent="center">
-      <Heading size="xl" color="teal">
+    <Stack justifyContent="center" minHeight="70vh" spacing={8}>
+      <Heading color="teal" size="xl">
         Generate OpenGraph image
       </Heading>
 
       <Grid
+        alignItems="center"
+        gap={12}
         templateColumns={{
           base: 'repeat(1fr)',
           md: 'repeat(2, 1fr)',
         }}
-        gap={12}
-        alignItems="center"
       >
         <Stack spacing={6}>
           <LinkGeneratorFormWrapper register={register} />

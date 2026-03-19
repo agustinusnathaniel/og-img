@@ -1,11 +1,11 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from './theme-toggle';
 
 const Header = () => {
   return (
-    <Flex as="header" width="full" align="center">
+    <Flex align="center" as="header" width="full">
       <Heading as="h1" size="md">
         <Link href="/">og-img</Link>
       </Heading>

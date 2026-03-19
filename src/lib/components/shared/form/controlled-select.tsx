@@ -1,9 +1,8 @@
 import type { SelectProps } from '@chakra-ui/react';
 import { Select } from '@chakra-ui/react';
-import * as React from 'react';
-
-import type { FormControlWrapperProps } from 'lib/components/shared/form/FormControlWrapper';
-import FormControlWrapper from 'lib/components/shared/form/FormControlWrapper';
+import type { FormControlWrapperProps } from 'lib/components/shared/form/form-control-wrapper';
+import FormControlWrapper from 'lib/components/shared/form/form-control-wrapper';
+import { forwardRef } from 'react';
 
 export type ControlledSelectProps = FormControlWrapperProps &
   SelectProps & {
@@ -13,7 +12,7 @@ export type ControlledSelectProps = FormControlWrapperProps &
     }>;
   };
 
-const ControlledSelect = React.forwardRef(
+const ControlledSelect = forwardRef(
   (
     {
       label,
@@ -28,16 +27,16 @@ const ControlledSelect = React.forwardRef(
   ) => {
     return (
       <FormControlWrapper
-        label={label}
         errorText={errorText}
         helperText={helperText}
         isInvalid={isInvalid}
         isRequired={isRequired}
+        label={label}
       >
         <Select
+          borderRadius={12}
           ref={ref}
           variant="filled"
-          borderRadius={12}
           {...selectProps}
           isRequired={isRequired}
         >
