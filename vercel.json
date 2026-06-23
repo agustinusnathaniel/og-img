@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "src/app/api/generate/route.tsx": {
+      "runtime": "nodejs@24.16.0",
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
+}

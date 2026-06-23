@@ -12,28 +12,36 @@ const ColorTemplate = ({
   center,
   width,
   height,
+  baseUrl,
 }: ColorTemplateProps) => {
   const aHeight = height ?? 0;
   const aWidth = width ?? 0;
-  const blurSize = (aWidth < aHeight ? aWidth : aHeight) / 3.2;
 
   return (
     <div
-      style={{ fontFamily: 'Inter' }}
-      tw="w-screen h-screen flex flex-col justify-center bg-gray-900"
+      style={{
+        position: 'relative',
+        fontFamily: 'Inter',
+        height: `${aHeight}px`,
+        width: `${aWidth}px`,
+      }}
+      tw="w-screen h-screen flex flex-col justify-center items-start bg-gray-900"
     >
+      {/* Static gradient background */}
       <div
         style={{
           position: 'absolute',
-          height: `${aHeight.toString()}px`,
-          width: `${aWidth.toString()}px`,
-          filter: `blur(${blurSize}px) saturate(125%)`,
-          backgroundImage:
-            'linear-gradient(45deg, #231e26, #a34e11, #199f9d, #102532)',
-          opacity: 0.92,
+          height: `${aHeight}px`,
+          width: `${aWidth}px`,
+          backgroundImage: `url(${baseUrl}/assets/color-bg.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       />
+
+      {/* Content layer */}
       <div
+        style={{ position: 'relative' }}
         tw={clsx(
           'flex flex-col p-32',
           center && 'w-screen items-center text-center'
