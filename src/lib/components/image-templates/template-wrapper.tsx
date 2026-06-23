@@ -15,12 +15,9 @@ const TemplateSwitcher = ({
   center,
   width,
   height,
-  blur,
 }: TemplateSwitcherProps) => {
   if (template === COLOR_TEMPLATE) {
-    return (
-      <ColorTemplate {...{ heading, text, center, width, height, blur }} />
-    );
+    return <ColorTemplate {...{ heading, text, center, width, height }} />;
   }
 
   return <BaseTemplate {...{ heading, text, width, height, center }} />;

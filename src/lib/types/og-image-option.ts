@@ -5,7 +5,6 @@ export type OgImageOption = {
   center?: boolean;
   width?: number;
   height?: number;
-  blur?: boolean;
 };
 
 export type OgImageOptionConverted = {

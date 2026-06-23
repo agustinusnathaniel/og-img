@@ -20,7 +20,6 @@ Generated images are cached at the edge with immutable headers (`s-maxage=315360
 | `template` | base | Template name (`color` for gradient background) |
 | `center` | `false` | Center-align content |
 | `width` / `height` | `1200` / `630` | Image dimensions |
-| `blur` | `true` | Apply blur filter to gradient (`?blur=false` to disable for faster renders) |
 
 **Runtime**: Node.js 22.x (fonts loaded from filesystem, not HTTP).
 **Fonts**: Only `Outfit-Medium` and `Outfit-Bold` are bundled.

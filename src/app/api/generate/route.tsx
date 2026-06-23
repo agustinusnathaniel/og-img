@@ -17,7 +17,6 @@ export function GET(req: NextRequest) {
   const center = Boolean(searchParams.get('center'));
   const width = Number(searchParams.get('width') ?? 1200);
   const height = Number(searchParams.get('height') ?? 630);
-  const blur = searchParams.get('blur') !== 'false';
   const templateProps = {
     heading,
     text,
@@ -25,7 +24,6 @@ export function GET(req: NextRequest) {
     center,
     width,
     height,
-    blur,
   };
 
   const response = new ImageResponse(<TemplateSwitcher {...templateProps} />, {
