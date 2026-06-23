@@ -10,7 +10,9 @@ export function GET(req: NextRequest) {
   const outfitMediumFontData = outfitMedium;
   const outfitBoldFontData = outfitBold;
 
-  const { searchParams } = new URL(req.url);
+  const url = new URL(req.url);
+  const { searchParams } = url;
+  const baseUrl = url.origin;
   const heading = searchParams.get('heading')?.slice(0, 100);
   const text = searchParams.get('text')?.slice(0, 200);
   const template = searchParams.get('template')?.slice(0, 200);
@@ -24,6 +26,7 @@ export function GET(req: NextRequest) {
     center,
     width,
     height,
+    baseUrl,
   };
 
   const response = new ImageResponse(<TemplateSwitcher {...templateProps} />, {

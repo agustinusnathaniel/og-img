@@ -12,31 +12,36 @@ const ColorTemplate = ({
   center,
   width,
   height,
+  baseUrl,
 }: ColorTemplateProps) => {
   const aHeight = height ?? 0;
   const aWidth = width ?? 0;
 
   return (
     <div
-      style={{ fontFamily: 'Inter' }}
-      tw="w-screen h-screen flex flex-col justify-center bg-gray-900"
+      style={{
+        position: 'relative',
+        fontFamily: 'Inter',
+        height: `${aHeight}px`,
+        width: `${aWidth}px`,
+      }}
+      tw="w-screen h-screen flex flex-col justify-center items-start bg-gray-900"
     >
+      {/* Static gradient background */}
       <div
         style={{
           position: 'absolute',
-          height: `${aHeight.toString()}px`,
-          width: `${aWidth.toString()}px`,
-          backgroundImage: `radial-gradient(
-            ellipse at 50% 50%,
-            rgba(163, 78, 17, 0.9) 0%,
-            rgba(25, 159, 157, 0.7) 30%,
-            rgba(16, 37, 50, 0.5) 60%,
-            transparent 80%
-          )`,
-          opacity: 0.92,
+          height: `${aHeight}px`,
+          width: `${aWidth}px`,
+          backgroundImage: `url(${baseUrl}/assets/color-bg.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       />
+
+      {/* Content layer */}
       <div
+        style={{ position: 'relative' }}
         tw={clsx(
           'flex flex-col p-32',
           center && 'w-screen items-center text-center'
