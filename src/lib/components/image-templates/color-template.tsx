@@ -12,10 +12,15 @@ const ColorTemplate = ({
   center,
   width,
   height,
+  blur = true,
 }: ColorTemplateProps) => {
   const aHeight = height ?? 0;
   const aWidth = width ?? 0;
-  const blurSize = (aWidth < aHeight ? aWidth : aHeight) / 3.2;
+  const blurSize = (aWidth < aHeight ? aWidth : aHeight) / 8;
+
+  const blurFilter = blur
+    ? `blur(${blurSize}px) saturate(125%)`
+    : 'saturate(125%)';
 
   return (
     <div
@@ -27,7 +32,7 @@ const ColorTemplate = ({
           position: 'absolute',
           height: `${aHeight.toString()}px`,
           width: `${aWidth.toString()}px`,
-          filter: `blur(${blurSize}px) saturate(125%)`,
+          filter: blurFilter,
           backgroundImage:
             'linear-gradient(45deg, #231e26, #a34e11, #199f9d, #102532)',
           opacity: 0.92,

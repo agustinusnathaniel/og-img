@@ -10,6 +10,7 @@ export const buildOgImageUrl = (options: OgImageOption) => {
   const converted: OgImageOptionConverted = {
     ...options,
     center: options.center ? String(options.center) : undefined,
+    blur: options.blur === false ? 'false' : undefined,
     width: options.width?.toString(),
     height: options.height?.toString(),
   };

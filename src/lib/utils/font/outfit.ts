@@ -1,8 +1,7 @@
-import { fontLoader } from './font-loader';
+import { fontLoaderNode } from './font-loader-node';
 
 const outfitFontLoader = (weight: string) =>
-  fontLoader(`/assets/fonts/Outfit-${weight}.ttf`);
+  fontLoaderNode(`/assets/fonts/Outfit-${weight}.ttf`);
 
-export const outfitRegular = outfitFontLoader('Regular');
 export const outfitMedium = outfitFontLoader('Medium');
 export const outfitBold = outfitFontLoader('Bold');

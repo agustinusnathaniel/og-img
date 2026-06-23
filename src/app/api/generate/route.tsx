@@ -4,11 +4,11 @@ import type { NextRequest } from 'next/server';
 import TemplateSwitcher from '@/lib/components/image-templates/template-wrapper';
 import { outfitBold, outfitMedium } from '@/lib/utils/font/outfit';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
-export async function GET(req: NextRequest) {
-  const outfitMediumFontData = await outfitMedium;
-  const outfitBoldFontData = await outfitBold;
+export function GET(req: NextRequest) {
+  const outfitMediumFontData = outfitMedium;
+  const outfitBoldFontData = outfitBold;
 
   const { searchParams } = new URL(req.url);
   const heading = searchParams.get('heading')?.slice(0, 100);
@@ -17,9 +17,18 @@ export async function GET(req: NextRequest) {
   const center = Boolean(searchParams.get('center'));
   const width = Number(searchParams.get('width') ?? 1200);
   const height = Number(searchParams.get('height') ?? 630);
-  const templateProps = { heading, text, template, center, width, height };
+  const blur = searchParams.get('blur') !== 'false';
+  const templateProps = {
+    heading,
+    text,
+    template,
+    center,
+    width,
+    height,
+    blur,
+  };
 
-  return new ImageResponse(<TemplateSwitcher {...templateProps} />, {
+  const response = new ImageResponse(<TemplateSwitcher {...templateProps} />, {
     width,
     height,
     fonts: [
@@ -35,4 +44,11 @@ export async function GET(req: NextRequest) {
       },
     ],
   });
+
+  response.headers.set(
+    'Cache-Control',
+    'public, s-maxage=31536000, max-age=0, immutable'
+  );
+
+  return response;
 }
