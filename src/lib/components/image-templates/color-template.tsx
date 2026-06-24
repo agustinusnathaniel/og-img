@@ -21,7 +21,7 @@ const ColorTemplate = ({
     <div
       style={{
         position: 'relative',
-        fontFamily: 'Inter',
+        fontFamily: 'Geologica',
         height: `${aHeight}px`,
         width: `${aWidth}px`,
       }}

@@ -9,7 +9,7 @@ type BaseTemplateProps = Omit<OgImageOption, 'template'>;
 const BaseTemplate = ({ heading, text, center }: BaseTemplateProps) => {
   return (
     <div
-      style={{ fontFamily: 'Inter' }}
+      style={{ fontFamily: 'Geologica' }}
       tw="w-screen h-screen p-32 flex flex-col justify-center bg-[#121212]"
     >
       <div
