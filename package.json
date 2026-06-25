@@ -29,7 +29,8 @@
     "up-latest": "pnpm up-interactive -L",
     "release": "cross-env HUSKY=0 commit-and-tag-version",
     "push-release": "git push --follow-tags origin main",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "cp node_modules/@fontsource-variable/geologica/files/geologica-latin-wght-normal.woff2 public/assets/fonts/geologica.woff2"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.36.0",

@@ -2,7 +2,7 @@ import type { NextRequest } from 'next/server';
 import { ImageResponse } from 'takumi-js/response';
 
 import TemplateSwitcher from '@/lib/components/image-templates/template-wrapper';
-import { geologicaFont } from '@/lib/utils/font/geologica';
+import { getGeologicaFont } from '@/lib/utils/font/geologica';
 
 export const runtime = 'nodejs';
 
@@ -73,7 +73,7 @@ export function GET(req: NextRequest) {
         fonts: [
           {
             name: 'Geologica',
-            data: geologicaFont,
+            data: getGeologicaFont(),
             weight: 500,
             style: 'normal',
           },
