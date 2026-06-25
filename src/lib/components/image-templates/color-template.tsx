@@ -58,14 +58,16 @@ const ColorTemplate = ({
       <div
         style={{ position: 'relative' }}
         tw={clsx(
-          'flex flex-col p-32',
+          'flex flex-col gap-8 p-32',
           center && 'w-screen items-center text-center'
         )}
       >
         {heading && (
-          <h1 tw="text-6xl font-bold text-gray-300 leading-tight">{heading}</h1>
+          <h1 tw="m-0 text-6xl font-bold text-gray-300 leading-tight">
+            {heading}
+          </h1>
         )}
-        {text && <p tw="font-medium text-3xl text-gray-300">{text}</p>}
+        {text && <p tw="m-0 text-4xl text-gray-300">{text}</p>}
       </div>
     </div>
   );

@@ -74,8 +74,6 @@ export function GET(req: NextRequest) {
           {
             name: 'Geologica',
             data: getGeologicaFont(),
-            weight: 500,
-            style: 'normal',
           },
         ],
       }
