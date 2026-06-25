@@ -12,6 +12,7 @@ export function GET(req: NextRequest) {
   try {
     const url = new URL(req.url);
     const { searchParams } = url;
+    const baseUrl = url.origin;
     const heading = searchParams.get('heading')?.slice(0, 100);
     const text = searchParams.get('text')?.slice(0, 200);
     const template =
@@ -28,15 +29,27 @@ export function GET(req: NextRequest) {
 
     const rawGradientFrom = searchParams.get('gradientFrom')?.slice(0, 30);
     const rawGradientTo = searchParams.get('gradientTo')?.slice(0, 30);
+    const gradient = searchParams.get('gradient')?.slice(0, 200);
 
+    // Only use CSS gradient when user explicitly provides colors; otherwise fall back to PNG
     const gradientFrom =
       rawGradientFrom && HEX_COLOR.test(rawGradientFrom)
         ? rawGradientFrom
-        : '#0f0f0f';
+        : undefined;
     const gradientTo =
       rawGradientTo && HEX_COLOR.test(rawGradientTo)
         ? rawGradientTo
-        : '#2d1b4e';
+        : undefined;
+
+    const rawGradientDegree = searchParams.get('gradientDegree')?.slice(0, 3);
+    const parsedDegree = Number(rawGradientDegree);
+    const gradientDegree =
+      rawGradientDegree &&
+      !Number.isNaN(parsedDegree) &&
+      parsedDegree >= 0 &&
+      parsedDegree <= 360
+        ? String(parsedDegree)
+        : '45';
 
     const templateProps = {
       heading,
@@ -45,8 +58,11 @@ export function GET(req: NextRequest) {
       center,
       width,
       height,
+      baseUrl,
       gradientFrom,
       gradientTo,
+      gradient,
+      gradientDegree,
     };
 
     const response = new ImageResponse(

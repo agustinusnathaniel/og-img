@@ -7,8 +7,7 @@ import BaseTemplate from './base-template';
 import ColorTemplate from './color-template';
 
 type TemplateSwitcherProps = OgImageOption & {
-  gradientFrom?: string;
-  gradientTo?: string;
+  gradient?: string;
 };
 
 const TemplateSwitcher = ({
@@ -18,13 +17,27 @@ const TemplateSwitcher = ({
   center,
   width,
   height,
+  baseUrl,
   gradientFrom,
   gradientTo,
+  gradient,
+  gradientDegree,
 }: TemplateSwitcherProps) => {
   if (template === COLOR_TEMPLATE) {
     return (
       <ColorTemplate
-        {...{ heading, text, center, width, height, gradientFrom, gradientTo }}
+        {...{
+          heading,
+          text,
+          center,
+          width,
+          height,
+          baseUrl,
+          gradientFrom,
+          gradientTo,
+          gradient,
+          gradientDegree,
+        }}
       />
     );
   }

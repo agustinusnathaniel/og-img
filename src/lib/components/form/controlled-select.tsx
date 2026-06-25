@@ -1,8 +1,6 @@
 'use client';
 
 import { createListCollection, Portal, Select } from '@chakra-ui/react';
-import type { FormControlWrapperProps } from 'lib/components/form/form-control-wrapper';
-import FormControlWrapper from 'lib/components/form/form-control-wrapper';
 import { useMemo } from 'react';
 import {
   type Control,
@@ -10,6 +8,9 @@ import {
   type FieldPath,
   type FieldValues,
 } from 'react-hook-form';
+
+import type { FormControlWrapperProps } from '@/lib/components/form/form-control-wrapper';
+import FormControlWrapper from '@/lib/components/form/form-control-wrapper';
 
 export type ControlledSelectProps<T extends FieldValues = FieldValues> =
   FormControlWrapperProps & {

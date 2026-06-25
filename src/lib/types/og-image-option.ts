@@ -6,6 +6,9 @@ export type OgImageOption = {
   width?: number;
   height?: number;
   baseUrl?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
+  gradientDegree?: string;
 };
 
 export type OgImageOptionConverted = {

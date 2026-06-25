@@ -32,7 +32,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.34.0",
+    "@chakra-ui/react": "^3.36.0",
     "@emotion/react": "^11.14.0",
     "@fontsource-variable/geologica": "^5.2.8",
     "@fontsource/outfit": "^5.2.8",

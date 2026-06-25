@@ -1,14 +1,14 @@
 'use client';
 
 import { Button, Grid, Heading, Stack } from '@chakra-ui/react';
-import LinkGeneratorFormWrapper from 'lib/components/link-generator/form-wrapper';
-import LinkGeneratorResultSection from 'lib/components/link-generator/result-section';
-import type { OgImageOption } from 'lib/types/og-image-option';
-import { buildOgImageUrl } from 'lib/utils/build-og-image-url';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
+import LinkGeneratorFormWrapper from '@/lib/components/link-generator/form-wrapper';
+import LinkGeneratorResultSection from '@/lib/components/link-generator/result-section';
 import { toaster } from '@/lib/components/ui/toaster';
+import type { OgImageOption } from '@/lib/types/og-image-option';
+import { buildOgImageUrl } from '@/lib/utils/build-og-image-url';
 
 const Generate = () => {
   const { watch, register, control } = useForm<OgImageOption>({
@@ -16,6 +16,7 @@ const Generate = () => {
       heading: 'Some Title',
       text: 'Some description',
       template: 'plain',
+      gradientDegree: '45',
     },
   });
 

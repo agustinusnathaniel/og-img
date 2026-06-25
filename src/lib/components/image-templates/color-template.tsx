@@ -4,9 +4,8 @@ import clsx from 'clsx';
 
 import type { OgImageOption } from '@/lib/types/og-image-option';
 
-type ColorTemplateProps = Omit<OgImageOption, 'template' | 'baseUrl'> & {
-  gradientFrom?: string;
-  gradientTo?: string;
+type ColorTemplateProps = Omit<OgImageOption, 'template'> & {
+  gradient?: string; // Full CSS gradient override
 };
 
 const ColorTemplate = ({
@@ -15,11 +14,21 @@ const ColorTemplate = ({
   center,
   width,
   height,
-  gradientFrom = '#0f0f0f',
-  gradientTo = '#2d1b4e',
+  baseUrl,
+  gradientFrom,
+  gradientTo,
+  gradient,
+  gradientDegree,
 }: ColorTemplateProps) => {
   const aHeight = height ?? 0;
   const aWidth = width ?? 0;
+
+  // Use CSS gradient only when user explicitly provides gradient params; otherwise fall back to PNG
+  const hasGradient = gradient || (gradientFrom && gradientTo);
+  const backgroundImage = hasGradient
+    ? gradient ||
+      `linear-gradient(${gradientDegree ?? 45}deg, ${gradientFrom} 0%, ${gradientTo} 100%)`
+    : `url(${baseUrl}/assets/color-bg.png)`;
 
   return (
     <div
@@ -31,13 +40,17 @@ const ColorTemplate = ({
       }}
       tw="w-screen h-screen flex flex-col justify-center items-start bg-gray-900"
     >
-      {/* Gradient background */}
+      {/* Background layer - gradient or PNG */}
       <div
         style={{
           position: 'absolute',
+          top: 0,
+          left: 0,
           height: `${aHeight}px`,
           width: `${aWidth}px`,
-          backgroundImage: `linear-gradient(135deg, ${gradientFrom} 0%, #1a1a1a 50%, ${gradientTo} 100%)`,
+          backgroundImage,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       />
 
