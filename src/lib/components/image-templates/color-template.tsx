@@ -4,7 +4,10 @@ import clsx from 'clsx';
 
 import type { OgImageOption } from '@/lib/types/og-image-option';
 
-type ColorTemplateProps = Omit<OgImageOption, 'template'>;
+type ColorTemplateProps = Omit<OgImageOption, 'template' | 'baseUrl'> & {
+  gradientFrom?: string;
+  gradientTo?: string;
+};
 
 const ColorTemplate = ({
   heading,
@@ -12,7 +15,8 @@ const ColorTemplate = ({
   center,
   width,
   height,
-  baseUrl,
+  gradientFrom = '#0f0f0f',
+  gradientTo = '#2d1b4e',
 }: ColorTemplateProps) => {
   const aHeight = height ?? 0;
   const aWidth = width ?? 0;
@@ -27,15 +31,13 @@ const ColorTemplate = ({
       }}
       tw="w-screen h-screen flex flex-col justify-center items-start bg-gray-900"
     >
-      {/* Static gradient background */}
+      {/* Gradient background */}
       <div
         style={{
           position: 'absolute',
           height: `${aHeight}px`,
           width: `${aWidth}px`,
-          backgroundImage: `url(${baseUrl}/assets/color-bg.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `linear-gradient(135deg, ${gradientFrom} 0%, #1a1a1a 50%, ${gradientTo} 100%)`,
         }}
       />
 

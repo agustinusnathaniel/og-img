@@ -1,17 +1,17 @@
-import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
+import { ImageResponse } from 'takumi-js/response';
 
 import TemplateSwitcher from '@/lib/components/image-templates/template-wrapper';
-import { geologicaBold, geologicaMedium } from '@/lib/utils/font/geologica';
+import { geologicaFont } from '@/lib/utils/font/geologica';
 
 export const runtime = 'nodejs';
+
+const HEX_COLOR = /^#[0-9a-fA-F]{3,8}$/;
 
 export function GET(req: NextRequest) {
   try {
     const url = new URL(req.url);
     const { searchParams } = url;
-    const baseUrl = url.origin;
-
     const heading = searchParams.get('heading')?.slice(0, 100);
     const text = searchParams.get('text')?.slice(0, 200);
     const template =
@@ -26,6 +26,18 @@ export function GET(req: NextRequest) {
       1080
     );
 
+    const rawGradientFrom = searchParams.get('gradientFrom')?.slice(0, 30);
+    const rawGradientTo = searchParams.get('gradientTo')?.slice(0, 30);
+
+    const gradientFrom =
+      rawGradientFrom && HEX_COLOR.test(rawGradientFrom)
+        ? rawGradientFrom
+        : '#0f0f0f';
+    const gradientTo =
+      rawGradientTo && HEX_COLOR.test(rawGradientTo)
+        ? rawGradientTo
+        : '#2d1b4e';
+
     const templateProps = {
       heading,
       text,
@@ -33,7 +45,8 @@ export function GET(req: NextRequest) {
       center,
       width,
       height,
-      baseUrl,
+      gradientFrom,
+      gradientTo,
     };
 
     const response = new ImageResponse(
@@ -44,13 +57,9 @@ export function GET(req: NextRequest) {
         fonts: [
           {
             name: 'Geologica',
-            data: geologicaMedium,
+            data: geologicaFont,
             weight: 500,
-          },
-          {
-            name: 'Geologica',
-            data: geologicaBold,
-            weight: 700,
+            style: 'normal',
           },
         ],
       }
