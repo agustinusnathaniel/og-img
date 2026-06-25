@@ -9,7 +9,9 @@ export const fontLoaderNode = (fontPath: string): Buffer => {
     return cached;
   }
 
-  const fullPath = path.join(process.cwd(), 'public', fontPath);
+  const fullPath = path.isAbsolute(fontPath)
+    ? fontPath
+    : path.join(process.cwd(), 'public', fontPath);
 
   if (!fs.existsSync(fullPath)) {
     throw new Error(
