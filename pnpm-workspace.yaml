@@ -1,2 +1,15 @@
 allowBuilds:
   sharp: true
+minimumReleaseAgeExclude:
+  - '@takumi-rs/core-darwin-arm64@2.2.0'
+  - '@takumi-rs/core-darwin-x64@2.2.0'
+  - '@takumi-rs/core-linux-arm64-gnu@2.2.0'
+  - '@takumi-rs/core-linux-arm64-musl@2.2.0'
+  - '@takumi-rs/core-linux-x64-gnu@2.2.0'
+  - '@takumi-rs/core-linux-x64-musl@2.2.0'
+  - '@takumi-rs/core-win32-arm64-msvc@2.2.0'
+  - '@takumi-rs/core-win32-x64-msvc@2.2.0'
+  - '@takumi-rs/core@2.2.0'
+  - '@takumi-rs/helpers@2.2.0'
+  - '@takumi-rs/wasm@2.2.0'
+  - takumi-js@2.2.0
