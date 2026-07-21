@@ -21,6 +21,8 @@
       "!src/**/*/utils.ts",
       "!src/**/*.css",
       "!*.d.ts",
+      "!*.svg",
+      "!**/*.svg",
       "!.agents",
       "!.agents",
       "!.claude"
@@ -33,10 +35,10 @@
   "linter": {
     "enabled": true,
     "domains": {
-      "next": "recommended"
+      "next": "preset"
     },
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "correctness": {
         "useImageSize": "off"
       },
