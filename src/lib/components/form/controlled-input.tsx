@@ -18,18 +18,16 @@ const ControlledInput = forwardRef<HTMLInputElement, ControlledInputProps>(
       ...inputProps
     }: ControlledInputProps,
     ref
-  ) => {
-    return (
-      <FormControlWrapper
-        errorText={errorText}
-        helperText={helperText}
-        invalid={invalid}
-        label={label}
-        required={required}
-      >
-        <Input borderRadius={12} ref={ref} variant="subtle" {...inputProps} />
-      </FormControlWrapper>
-    );
-  }
+  ) => (
+    <FormControlWrapper
+      errorText={errorText}
+      helperText={helperText}
+      invalid={invalid}
+      label={label}
+      required={required}
+    >
+      <Input borderRadius={12} ref={ref} variant="subtle" {...inputProps} />
+    </FormControlWrapper>
+  )
 );
 export default ControlledInput;

@@ -9,56 +9,56 @@ import '@/lib/styles/globals.css';
 const APP_NAME = 'og-img';
 
 export const metadata: Metadata = {
-  title: {
-    default: APP_NAME,
-    template: '%s | og-img',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: APP_NAME,
   },
-  description: 'OpenGraph image edge service',
   applicationName: APP_NAME,
   authors: [{ name: 'agustinusnathaniel' }],
-  keywords: ['opengraph', 'og:image', 'image generator', 'nextjs'],
-  metadataBase: new URL('https://og.sznm.dev'),
-  openGraph: {
-    type: 'website',
-    url: 'https://og.sznm.dev',
-    title: APP_NAME,
-    description: 'OpenGraph image edge service',
-    images: [
-      {
-        url: 'https://og.sznm.dev/api/generate?heading=Open%20Graph%20Image%20Generator&text=https://og.sznm.dev',
-        alt: 'og-img',
-      },
-    ],
-    siteName: APP_NAME,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@agstnsnathaniel',
-    title: APP_NAME,
-    description: 'OpenGraph image edge service',
-    images: [
-      'https://og.sznm.dev/api/generate?heading=Open%20Graph%20Image%20Generator&text=https://og.sznm.dev',
-    ],
+  description: 'OpenGraph image edge service',
+  formatDetection: {
+    telephone: false,
   },
   icons: {
     icon: '/favicon.ico',
   },
+  keywords: ['opengraph', 'og:image', 'image generator', 'nextjs'],
   manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
+  metadataBase: new URL('https://og.sznm.dev'),
+  openGraph: {
+    description: 'OpenGraph image edge service',
+    images: [
+      {
+        alt: 'og-img',
+        url: 'https://og.sznm.dev/api/generate?heading=Open%20Graph%20Image%20Generator&text=https://og.sznm.dev',
+      },
+    ],
+    siteName: APP_NAME,
     title: APP_NAME,
-    statusBarStyle: 'default',
+    type: 'website',
+    url: 'https://og.sznm.dev',
   },
-  formatDetection: {
-    telephone: false,
+  title: {
+    default: APP_NAME,
+    template: '%s | og-img',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@agstnsnathaniel',
+    description: 'OpenGraph image edge service',
+    images: [
+      'https://og.sznm.dev/api/generate?heading=Open%20Graph%20Image%20Generator&text=https://og.sznm.dev',
+    ],
+    title: APP_NAME,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#FFFFFF',
-  width: 'device-width',
   initialScale: 1,
   minimumScale: 1,
+  themeColor: '#FFFFFF',
+  width: 'device-width',
 };
 
 export default function RootLayout({

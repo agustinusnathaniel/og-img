@@ -29,10 +29,10 @@ const Page404 = () => {
           <Link
             href="/"
             style={{
-              display: 'inline-block',
-              padding: '8px 16px',
               backgroundColor: buttonBg,
               borderRadius: '8px',
+              display: 'inline-block',
+              padding: '8px 16px',
               textDecoration: 'none',
             }}
           >

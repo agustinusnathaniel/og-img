@@ -2,11 +2,20 @@ import { createSystem, defaultConfig, defineRecipe } from '@chakra-ui/react';
 
 export const system = createSystem(defaultConfig, {
   theme: {
-    tokens: {
-      fonts: {
-        heading: { value: 'Outfit, serif' },
-        body: { value: 'Outfit, sans-serif' },
+    recipes: {
+      button: defineRecipe({
+        base: {
+          borderRadius: 12,
+          shadow: 'lg',
+        },
+      }),
+    },
+    semanticTokens: {
+      colors: {
+        // Custom brand colors can be added here
       },
+    },
+    tokens: {
       colors: {
         gray: {
           50: { value: '#e8e9e9' },
@@ -22,19 +31,10 @@ export const system = createSystem(defaultConfig, {
           950: { value: '#020303' },
         },
       },
-    },
-    semanticTokens: {
-      colors: {
-        // Custom brand colors can be added here
+      fonts: {
+        body: { value: 'Outfit, sans-serif' },
+        heading: { value: 'Outfit, serif' },
       },
-    },
-    recipes: {
-      button: defineRecipe({
-        base: {
-          borderRadius: 12,
-          shadow: 'lg',
-        },
-      }),
     },
   },
 });

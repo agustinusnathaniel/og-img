@@ -35,16 +35,20 @@
   "linter": {
     "enabled": true,
     "domains": {
-      "next": "preset"
+      "next": "recommended"
     },
     "rules": {
       "preset": "recommended",
       "correctness": {
         "useImageSize": "off"
       },
+      "complexity": {
+        "noRedundantDefaultExport": "off"
+      },
       "performance": {
         "noBarrelFile": "off",
-        "useTopLevelRegex": "error"
+        "useTopLevelRegex": "error",
+        "noJsxPropsBind": "off"
       },
       "style": {
         "useConsistentTypeDefinitions": "off",
@@ -67,7 +71,10 @@
           "options": {
             "allow": ["error", "info"]
           }
-        }
+        },
+        "noLeakedRender": "off",
+        "noUnknownAttribute": "off",
+        "noReactForwardRef": "off"
       }
     }
   },

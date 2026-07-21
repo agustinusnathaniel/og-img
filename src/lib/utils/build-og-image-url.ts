@@ -10,8 +10,8 @@ export const buildOgImageUrl = (options: OgImageOption) => {
   const converted: OgImageOptionConverted = {
     ...options,
     center: options.center ? String(options.center) : undefined,
-    width: options.width?.toString(),
     height: options.height?.toString(),
+    width: options.width?.toString(),
   };
   const purgedOptions = pickBy(converted);
   const urlParams = new URLSearchParams(purgedOptions).toString();

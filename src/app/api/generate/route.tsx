@@ -52,30 +52,30 @@ export function GET(req: NextRequest) {
         : '45';
 
     const templateProps = {
-      heading,
-      text,
-      template,
-      center,
-      width,
-      height,
       baseUrl,
-      gradientFrom,
-      gradientTo,
+      center,
       gradient,
       gradientDegree,
+      gradientFrom,
+      gradientTo,
+      heading,
+      height,
+      template,
+      text,
+      width,
     };
 
     const response = new ImageResponse(
       <TemplateSwitcher {...templateProps} />,
       {
-        width,
-        height,
         fonts: [
           {
-            name: 'Geologica',
             data: getGeologicaFont(),
+            name: 'Geologica',
           },
         ],
+        height,
+        width,
       }
     );
 
@@ -88,8 +88,8 @@ export function GET(req: NextRequest) {
   } catch (error) {
     console.error('OG image generation failed:', error);
     return new Response(JSON.stringify({ error: 'Failed to generate image' }), {
-      status: 500,
       headers: { 'Content-Type': 'application/json' },
+      status: 500,
     });
   }
 }

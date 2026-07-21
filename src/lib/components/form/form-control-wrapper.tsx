@@ -21,17 +21,15 @@ const FormControlWrapper = ({
   invalid,
   required,
   children,
-}: FormControlWrapperProps) => {
-  return (
-    <Field.Root invalid={invalid} required={required}>
-      {label && <Field.Label>{label}</Field.Label>}
+}: FormControlWrapperProps) => (
+  <Field.Root invalid={invalid} required={required}>
+    {label && <Field.Label>{label}</Field.Label>}
 
-      {children}
+    {children}
 
-      {errorText && <Field.ErrorText>{errorText}</Field.ErrorText>}
-      {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
-    </Field.Root>
-  );
-};
+    {errorText && <Field.ErrorText>{errorText}</Field.ErrorText>}
+    {helperText && <Field.HelperText>{helperText}</Field.HelperText>}
+  </Field.Root>
+);
 
 export default FormControlWrapper;

@@ -13,25 +13,23 @@ import { buildOgImageUrl } from '@/lib/utils/build-og-image-url';
 const Generate = () => {
   const { watch, register, control } = useForm<OgImageOption>({
     defaultValues: {
-      heading: 'Some Title',
-      text: 'Some description',
-      template: 'plain',
       gradientDegree: '45',
+      heading: 'Some Title',
+      template: 'plain',
+      text: 'Some description',
     },
   });
 
   const values = watch();
 
-  const ogImageUrl = useMemo(() => {
-    return buildOgImageUrl(values);
-  }, [values]);
+  const ogImageUrl = useMemo(() => buildOgImageUrl(values), [values]);
 
   const handleClickCopy = () => {
     navigator.clipboard.writeText(ogImageUrl);
 
     toaster.create({
-      title: 'OpenGraph image url copied!',
       description: ogImageUrl,
+      title: 'OpenGraph image url copied!',
       type: 'success',
     });
   };

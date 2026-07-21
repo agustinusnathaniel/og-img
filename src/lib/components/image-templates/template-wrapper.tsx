@@ -27,22 +27,22 @@ const TemplateSwitcher = ({
     return (
       <ColorTemplate
         {...{
-          heading,
-          text,
-          center,
-          width,
-          height,
           baseUrl,
-          gradientFrom,
-          gradientTo,
+          center,
           gradient,
           gradientDegree,
+          gradientFrom,
+          gradientTo,
+          heading,
+          height,
+          text,
+          width,
         }}
       />
     );
   }
 
-  return <BaseTemplate {...{ heading, text, width, height, center }} />;
+  return <BaseTemplate {...{ center, heading, height, text, width }} />;
 };
 
 export default TemplateSwitcher;

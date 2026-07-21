@@ -33,9 +33,9 @@ const ColorTemplate = ({
   return (
     <div
       style={{
-        position: 'relative',
         fontFamily: 'Geologica',
         height: `${aHeight}px`,
+        position: 'relative',
         width: `${aWidth}px`,
       }}
       tw="w-screen h-screen flex flex-col justify-center items-start bg-gray-900"
@@ -43,14 +43,14 @@ const ColorTemplate = ({
       {/* Background layer - gradient or PNG */}
       <div
         style={{
+          backgroundImage,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          height: `${aHeight}px`,
+          left: 0,
           position: 'absolute',
           top: 0,
-          left: 0,
-          height: `${aHeight}px`,
           width: `${aWidth}px`,
-          backgroundImage,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       />
 
