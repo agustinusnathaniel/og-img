@@ -4,8 +4,6 @@ import { ImageResponse } from 'takumi-js/response';
 import TemplateSwitcher from '@/lib/components/image-templates/template-wrapper';
 import { getGeologicaFont } from '@/lib/utils/font/geologica';
 
-export const runtime = 'nodejs';
-
 const HEX_COLOR = /^#[0-9a-fA-F]{3,8}$/;
 
 export function GET(req: NextRequest) {
