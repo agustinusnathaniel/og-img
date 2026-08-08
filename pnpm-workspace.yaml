@@ -13,3 +13,6 @@ minimumReleaseAgeExclude:
   - '@takumi-rs/helpers@2.2.0'
   - '@takumi-rs/wasm@2.2.0'
   - takumi-js@2.2.0
+  - next
+  - '@next/*'
+  - '@typescript-eslint/*'
