@@ -1,5 +1,5 @@
 {
-  "name": "nextarter-chakra",
+  "name": "og-img",
   "version": "1.1.2",
   "private": true,
   "author": "agustinusnathaniel",
@@ -50,14 +50,14 @@
     "typescript": "^7.0.2",
     "ultracite": "7.10.6"
   },
-  "packageManager": "pnpm@11.8.0",
+  "packageManager": "pnpm@12.0.0",
   "engines": {
     "node": ">=24"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "24.16.0",
+      "version": "^24.16.0",
       "onFail": "download"
     }
   }
