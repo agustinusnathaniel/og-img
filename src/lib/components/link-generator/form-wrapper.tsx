@@ -23,6 +23,130 @@ type LinkGeneratorFormWrapperProps = {
   control: Control<OgImageOption>;
 };
 
+function GradientColorField({
+  control,
+  name,
+  label,
+  defaultColor,
+}: {
+  control: Control<OgImageOption>;
+  name: 'gradientFrom' | 'gradientTo';
+  label: string;
+  defaultColor: string;
+}) {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <Field.Root>
+          <Field.Label>{label}</Field.Label>
+          {field.value ? (
+            <HStack gap={2}>
+              <ColorPicker.Root
+                onValueChange={(details) =>
+                  field.onChange(details.value.toString('hex'))
+                }
+                value={parseColor(field.value)}
+              >
+                <ColorPicker.Control>
+                  <ColorPicker.ValueSwatch />
+                  <ColorPicker.ValueText />
+                  <ColorPicker.Trigger />
+                </ColorPicker.Control>
+                <ColorPicker.Positioner>
+                  <ColorPicker.Content>
+                    <ColorPicker.Area />
+                    <ColorPicker.ChannelSlider channel="hue" />
+                    <ColorPicker.ChannelInput channel="hex" />
+                  </ColorPicker.Content>
+                </ColorPicker.Positioner>
+              </ColorPicker.Root>
+              <Button
+                colorPalette="red"
+                onClick={() => field.onChange(undefined)}
+                size="xs"
+                variant="ghost"
+              >
+                Clear
+              </Button>
+            </HStack>
+          ) : (
+            <Button
+              justifyContent="flex-start"
+              onClick={() => field.onChange(defaultColor)}
+              variant="outline"
+              width="full"
+            >
+              + Set {label.toLowerCase()}
+            </Button>
+          )}
+          <Field.HelperText>
+            Leave empty to use the default gradient image
+          </Field.HelperText>
+        </Field.Root>
+      )}
+    />
+  );
+}
+
+function GradientDegreeField({ control }: { control: Control<OgImageOption> }) {
+  return (
+    <Controller
+      control={control}
+      name="gradientDegree"
+      render={({ field }) => (
+        <Field.Root>
+          <Field.Label>Gradient angle</Field.Label>
+          <Slider.Root
+            max={360}
+            maxW="md"
+            min={0}
+            name={field.name}
+            onValueChange={(details) =>
+              field.onChange(String(details.value[0]))
+            }
+            value={[Number(field.value ?? 45)]}
+            width="full"
+          >
+            <Slider.Control>
+              <Slider.Track>
+                <Slider.Range />
+              </Slider.Track>
+              <Slider.Thumbs />
+            </Slider.Control>
+            <Slider.ValueText />
+          </Slider.Root>
+          <Field.HelperText>
+            Direction of the gradient in degrees (0 = top to bottom, 90 = left
+            to right, 45 = diagonal)
+          </Field.HelperText>
+        </Field.Root>
+      )}
+    />
+  );
+}
+
+function ColorTemplateFields({ control }: { control: Control<OgImageOption> }) {
+  return (
+    <>
+      <GradientColorField
+        control={control}
+        defaultColor="#231e26"
+        label="Gradient start color"
+        name="gradientFrom"
+      />
+      <GradientColorField
+        control={control}
+        defaultColor="#102532"
+        label="Gradient end color"
+        name="gradientTo"
+      />
+      <GradientDegreeField control={control} />
+    </>
+  );
+}
+
 const LinkGeneratorFormWrapper = ({
   register,
   control,
@@ -52,150 +176,7 @@ const LinkGeneratorFormWrapper = ({
         placeholder="Select template"
         size="md"
       />
-
-      {isColorTemplate && (
-        <>
-          <Controller
-            control={control}
-            name="gradientFrom"
-            render={({ field }) => (
-              <Field.Root>
-                <Field.Label>Gradient start color</Field.Label>
-                {field.value ? (
-                  <HStack gap={2}>
-                    <ColorPicker.Root
-                      onValueChange={(details) =>
-                        field.onChange(details.value.toString('hex'))
-                      }
-                      value={parseColor(field.value)}
-                    >
-                      <ColorPicker.Control>
-                        <ColorPicker.ValueSwatch />
-                        <ColorPicker.ValueText />
-                        <ColorPicker.Trigger />
-                      </ColorPicker.Control>
-                      <ColorPicker.Positioner>
-                        <ColorPicker.Content>
-                          <ColorPicker.Area />
-                          <ColorPicker.ChannelSlider channel="hue" />
-                          <ColorPicker.ChannelInput channel="hex" />
-                        </ColorPicker.Content>
-                      </ColorPicker.Positioner>
-                    </ColorPicker.Root>
-                    <Button
-                      colorPalette="red"
-                      onClick={() => field.onChange(undefined)}
-                      size="xs"
-                      variant="ghost"
-                    >
-                      Clear
-                    </Button>
-                  </HStack>
-                ) : (
-                  <Button
-                    justifyContent="flex-start"
-                    onClick={() => field.onChange('#231e26')}
-                    variant="outline"
-                    width="full"
-                  >
-                    + Set gradient start color
-                  </Button>
-                )}
-                <Field.HelperText>
-                  Leave empty to use the default gradient image
-                </Field.HelperText>
-              </Field.Root>
-            )}
-          />
-
-          <Controller
-            control={control}
-            name="gradientTo"
-            render={({ field }) => (
-              <Field.Root>
-                <Field.Label>Gradient end color</Field.Label>
-                {field.value ? (
-                  <HStack gap={2}>
-                    <ColorPicker.Root
-                      onValueChange={(details) =>
-                        field.onChange(details.value.toString('hex'))
-                      }
-                      value={parseColor(field.value)}
-                    >
-                      <ColorPicker.Control>
-                        <ColorPicker.ValueSwatch />
-                        <ColorPicker.ValueText />
-                        <ColorPicker.Trigger />
-                      </ColorPicker.Control>
-                      <ColorPicker.Positioner>
-                        <ColorPicker.Content>
-                          <ColorPicker.Area />
-                          <ColorPicker.ChannelSlider channel="hue" />
-                          <ColorPicker.ChannelInput channel="hex" />
-                        </ColorPicker.Content>
-                      </ColorPicker.Positioner>
-                    </ColorPicker.Root>
-                    <Button
-                      colorPalette="red"
-                      onClick={() => field.onChange(undefined)}
-                      size="xs"
-                      variant="ghost"
-                    >
-                      Clear
-                    </Button>
-                  </HStack>
-                ) : (
-                  <Button
-                    justifyContent="flex-start"
-                    onClick={() => field.onChange('#102532')}
-                    variant="outline"
-                    width="full"
-                  >
-                    + Set gradient end color
-                  </Button>
-                )}
-                <Field.HelperText>
-                  Leave empty to use the default gradient image
-                </Field.HelperText>
-              </Field.Root>
-            )}
-          />
-
-          <Controller
-            control={control}
-            name="gradientDegree"
-            render={({ field }) => (
-              <Field.Root>
-                <Field.Label>Gradient angle</Field.Label>
-                <Slider.Root
-                  max={360}
-                  maxW="md"
-                  min={0}
-                  name={field.name}
-                  onValueChange={(details) =>
-                    field.onChange(String(details.value[0]))
-                  }
-                  value={[Number(field.value ?? 45)]}
-                  width="full"
-                >
-                  <Slider.Control>
-                    <Slider.Track>
-                      <Slider.Range />
-                    </Slider.Track>
-                    <Slider.Thumbs />
-                  </Slider.Control>
-                  <Slider.ValueText />
-                </Slider.Root>
-                <Field.HelperText>
-                  Direction of the gradient in degrees (0 = top to bottom, 90 =
-                  left to right, 45 = diagonal)
-                </Field.HelperText>
-              </Field.Root>
-            )}
-          />
-        </>
-      )}
-
+      {isColorTemplate && <ColorTemplateFields control={control} />}
       <Checkbox.Root {...register('center')}>
         <Checkbox.HiddenInput />
         <Checkbox.Control>
