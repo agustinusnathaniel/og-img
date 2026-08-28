@@ -1,1 +1,3 @@
-export { default } from '@/lib/pages/home';
+import HomePage from '@/lib/pages/home';
+
+export default HomePage;
