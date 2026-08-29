@@ -1,4 +1,3 @@
-manage-package-manager-versions: true
 allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
@@ -17,3 +16,6 @@ minimumReleaseAgeExclude:
   - next
   - '@next/*'
   - '@typescript-eslint/*'
+  - '@chakra-ui/*' # @chakra-ui/react@3.37.0 published 2026-08-28 violates minimumReleaseAge=1440
+  - es-toolkit # 1.52.0 published 2026-08-28
+  - pretty-ms # 9.3.1 published 2026-08-28
