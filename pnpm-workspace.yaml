@@ -1,3 +1,4 @@
+manage-package-manager-versions: true
 allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
