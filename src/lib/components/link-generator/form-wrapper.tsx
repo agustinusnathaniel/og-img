@@ -40,6 +40,7 @@ function GradientColorField({
       name={name}
       render={({ field }) => (
         <Field.Root>
+          {/* biome-ignore lint/a11y/noLabelWithoutControl: Chakra Field.Label auto-associates with the control via Field.Root context (ark-ui htmlFor) */}
           <Field.Label>{label}</Field.Label>
           {field.value ? (
             <HStack gap={2}>
@@ -97,6 +98,7 @@ function GradientDegreeField({ control }: { control: Control<OgImageOption> }) {
       name="gradientDegree"
       render={({ field }) => (
         <Field.Root>
+          {/* biome-ignore lint/a11y/noLabelWithoutControl: Chakra Field.Label auto-associates with the control via Field.Root context (ark-ui htmlFor) */}
           <Field.Label>Gradient angle</Field.Label>
           <Slider.Root
             max={360}

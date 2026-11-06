@@ -23,6 +23,7 @@ const FormControlWrapper = ({
   children,
 }: FormControlWrapperProps) => (
   <Field.Root invalid={invalid} required={required}>
+    {/* biome-ignore lint/a11y/noLabelWithoutControl: Chakra Field.Label auto-associates with the control via Field.Root context (ark-ui htmlFor) */}
     {label && <Field.Label>{label}</Field.Label>}
 
     {children}
